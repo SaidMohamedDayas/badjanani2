@@ -22,13 +22,15 @@ export default function Home() {
             priority
           />
           <p className="title">Badjanani 2</p>
-          <p className="subtitle">Site en construction</p>
+          <p className="subtitle">
+            Formulaire d&apos;inscription pour la sortie du 28 Décembre 2024
+          </p>
           <a
-            href="https://www.facebook.com/people/Actualit%C3%A9-B2/100083339030768/?sk=about"
+            href="https://forms.office.com/Pages/ResponsePage.aspx?id=lGJLFC2VhkuHqqqL8peaR6aCMqFMfjVFr2r2j2HffLRUOEFYWldLMEU1Mk9OSTRIR0lDVVpVNlZLTS4u"
             target="_blank"
             className="actuality flex mt-8 items-center font-bold"
           >
-            Cliquez ici pour suivre sur Facebook l&apos;actualité de B2
+            Cliquez ici pour vous inscrire à la sortie
           </a>
         </div>
       </div>
