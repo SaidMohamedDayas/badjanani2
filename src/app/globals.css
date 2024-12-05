@@ -77,6 +77,7 @@ body {
   font-weight: 700;
   text-align: center;
   color: rgb(144, 10, 10);
+  width: 60%;
 }
 
 .actuality {
@@ -121,6 +122,7 @@ body {
 @media screen and (max-width: 925px) {
   .subtitle {
     font-size: 2.5rem;
+    width: 80%;
   }
 }
 
