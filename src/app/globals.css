@@ -111,7 +111,7 @@ body {
   }
 
   .subtitle {
-    font-size: 3rem;
+    font-size: 1.4rem;
   }
 
   .actuality {
@@ -121,14 +121,13 @@ body {
 
 @media screen and (max-width: 925px) {
   .subtitle {
-    font-size: 2.5rem;
     width: 80%;
   }
 }
 
 @media screen and (max-width: 770px) {
   .subtitle {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
