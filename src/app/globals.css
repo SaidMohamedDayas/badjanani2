@@ -22,10 +22,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background:
-    linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgba(var(--background-end-rgb), 1)) rgba(var(--background-start-rgb), 1);
+      rgba(var(--background-end-rgb), 1)
+    )
+    rgba(var(--background-start-rgb), 1);
 }
 
 .video-container {
@@ -42,7 +44,6 @@ body {
   min-width: 100%;
   min-height: 100%;
   object-fit: cover;
-
 }
 
 .video-container::before {
@@ -52,7 +53,6 @@ body {
   width: 100%;
   z-index: -99;
   background-color: #000000e0;
-
 }
 
 .title {
@@ -60,7 +60,7 @@ body {
   top: 66%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 2.3rem;
   font-weight: 700;
   text-align: center;
@@ -72,8 +72,8 @@ body {
   top: 72%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
   color: rgb(144, 10, 10);
@@ -84,7 +84,7 @@ body {
   top: 77%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   text-align: center;
@@ -97,7 +97,6 @@ body {
   background-color: rgb(255, 249, 249);
   color: rgb(42, 135, 223);
 }
-
 
 @layer utilities {
   .text-balance {
