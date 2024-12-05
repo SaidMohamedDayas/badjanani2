@@ -76,7 +76,8 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  color: rgb(144, 10, 10);
+  /* color: rgb(144, 10, 10); */
+  color: rgb(42, 135, 223);
   width: 60%;
 }
 
