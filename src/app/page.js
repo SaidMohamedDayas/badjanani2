@@ -1,33 +1,29 @@
+"use client";
+import { useState } from "react";
+import Background from "./components/Background";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Image from "next/image";
+import ZoomForm from "./components/ZoomForm";
 
 export default function Home() {
-  return (
-    <main className="relative min-h-screen">
-      {/* Conteneur de la vidéo */}
-      <div className="video-container absolute inset-0 -z-10">
-        <video
-          src="/video-moon.mp4"
-          type="video/mp4"
-          autoPlay
-          muted
-          loop
-          id="background-video"
-          className="w-full h-full object-cover"
-        ></video>
-      </div>
+  const [showZoomForm, setShowZoomForm] = useState(false);
 
-      {/* Contenu centré */}
-      <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4 text-center">
+  return (
+    <div className="relative min-h-screen">
+      <Background />
+      <Header />
+      <main className="flex flex-col items-center justify-center min-h-screen gap-6 px-4 text-center">
         <Image
-          src="/logo-b2.png"
+          src="/B2-Logo.png"
           alt="Badjanani 2"
           width={270}
           height={270}
           className="rounded-full"
           priority
         />
-        <p className="title text-white text-4xl font-bold">Badjanani 2</p>
-        <p className="subtitle text-blue-500 text-lg font-semibold">
+        {/* <p className="title text-white text-4xl font-bold">Badjanani 2</p> */}
+        <p className="subtitle text-custom-blue text-lg font-semibold">
           Formulaire d&apos;inscription pour la sortie du 28 Décembre 2024
         </p>
         <a
@@ -38,7 +34,18 @@ export default function Home() {
         >
           Cliquez ici pour vous inscrire à la sortie
         </a>
-      </div>
-    </main>
+        <p className="subtitle text-custom-blue text-lg font-semibold">
+          Cours religieux
+        </p>
+        <button
+          onClick={() => setShowZoomForm(true)}
+          className="actuality inline-block text-white border-2 border-white py-3 px-6 rounded-lg font-bold hover:bg-white hover:text-blue-500 transition"
+        >
+          Cliquez ici pour accéder au cours
+        </button>
+      </main>
+      <Footer />
+      {showZoomForm && <ZoomForm onClose={() => setShowZoomForm(false)} />}
+    </div>
   );
 }
