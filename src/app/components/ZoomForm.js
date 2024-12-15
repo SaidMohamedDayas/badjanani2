@@ -25,11 +25,13 @@ export default function ZoomForm({ onClose }) {
     try {
       const response = await apiClient.get(`/members/${formData.memberId}`);
       const member = response.data;
-      if (member && member.firstName) {
+      if (member && member.firstName && member.lastName === formData.lastName) {
         setFirstName(member.firstName);
         setIsAuthorized(true);
+        console.log("member ok", member);
       } else {
         setError("Nom de famille ou numéro d'adhérent incorrect.");
+        console.log("member error", member);
       }
     } catch (error) {
       setError("Erreur lors de la vérification des informations.");
