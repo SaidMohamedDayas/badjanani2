@@ -15,7 +15,10 @@ export default function ZoomForm({ onClose }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: name === "memberId" ? value.toUpperCase() : value,
+    });
   };
 
   const handleSubmit = async (e) => {
