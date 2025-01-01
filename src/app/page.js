@@ -24,15 +24,15 @@ export default function Home() {
         />
         {/* <p className="title text-white text-4xl font-bold">Badjanani 2</p> */}
         <p className="subtitle text-custom-blue text-lg font-semibold">
-          Formulaire d&apos;inscription pour la sortie du 28 Décembre 2024
+          Payer votre cotisation en ligne sur PayPal
         </p>
         <a
-          href="https://forms.office.com/Pages/ResponsePage.aspx?id=lGJLFC2VhkuHqqqL8peaR6aCMqFMfjVFr2r2j2HffLRUOEFYWldLMEU1Mk9OSTRIR0lDVVpVNlZLTS4u"
+          href="https://www.paypal.me/assoB2"
           target="_blank"
           rel="noopener noreferrer"
           className="actuality inline-block text-white border-2 border-white py-3 px-6 rounded-lg font-bold hover:bg-white hover:text-blue-500 transition"
         >
-          Cliquez ici pour vous inscrire à la sortie
+          Cliquez ici pour payer
         </a>
         <p className="subtitle text-custom-blue text-lg font-semibold">
           Cours religieux
