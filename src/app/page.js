@@ -24,7 +24,8 @@ export default function Home() {
         />
         {/* <p className="title text-white text-4xl font-bold">Badjanani 2</p> */}
         <p className="subtitle text-custom-blue text-lg font-semibold">
-          Payer votre cotisation en ligne sur PayPal
+          Payez votre cotisation en ligne sur PayPal <br /> N&apos;oubliez pas
+          de sélectionner l&apos;option &quot;entre amis&quot;
         </p>
         <a
           href="https://www.paypal.me/assoB2"
