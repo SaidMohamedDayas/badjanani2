@@ -2,7 +2,7 @@ const ZoomMeeting = ({ firstName }) => {
   const handleClick = (event) => {
     event.preventDefault();
     window.open(
-      "https://us06web.zoom.us/j/2994504043?pwd=7GcIQmLe5bphIE4xmU2EfAwRB0xB2z.1",
+      "https://us06web.zoom.us/j/81408067206?pwd=APoK4zISWOP8iDB0vqfBYRUxfcxVpH.1",
       "_blank",
       "noopener,noreferrer"
     );
@@ -11,7 +11,7 @@ const ZoomMeeting = ({ firstName }) => {
 
   return (
     <a
-      href="https://us06web.zoom.us/j/2994504043?pwd=7GcIQmLe5bphIE4xmU2EfAwRB0xB2z.1"
+      href="https://us06web.zoom.us/j/81408067206?pwd=APoK4zISWOP8iDB0vqfBYRUxfcxVpH.1"
       target="_blank"
       rel="noopener noreferrer"
       className="text-white rounded"
