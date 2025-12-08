@@ -39,7 +39,7 @@ export default function ZoomForm({ onClose }) {
         setError("Nom de famille ou numéro d'adhérent incorrect.");
       }
     } catch (error) {
-      setError("Erreur lors de la vérification des informations.");
+      setError("Impossible de vérifier vos informations. Veuillez contacter le bureau de l'association pour assistance.");
     } finally {
       setIsLoading(false);
     }
