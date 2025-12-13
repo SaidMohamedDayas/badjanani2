@@ -39,7 +39,11 @@ export default function ZoomForm({ onClose }) {
         setError("Nom de famille ou numéro d'adhérent incorrect.");
       }
     } catch (error) {
-      setError("Impossible de vérifier vos informations. Veuillez contacter le bureau de l'association pour assistance.");
+      if (error.response && error.response.status === 404) {
+        setError("Nom de famille ou numéro d'adhérent incorrect.");
+      } else {
+        setError("Impossible de vérifier vos informations. Veuillez contacter le bureau de l'association pour assistance.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -70,6 +74,14 @@ export default function ZoomForm({ onClose }) {
             />
             {error && <p className="text-red-500">{error}</p>}
             <div className="flex justify-between items-center">
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-8 h-8 flex items-center justify-center text-red-500 border border-red-500 rounded-full"
+                disabled={isLoading}
+              >
+                X
+              </button>
               <button
                 type="submit"
                 className="p-1 text-white rounded-full border border-green-500 flex items-center"
@@ -112,14 +124,6 @@ export default function ZoomForm({ onClose }) {
                     ></path>
                   </svg>
                 )}
-              </button>
-              <button
-                type="button"
-                onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center text-red-500 border border-red-500 rounded-full"
-                disabled={isLoading}
-              >
-                X
               </button>
             </div>
           </form>
