@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Background from "./components/Background";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,6 +8,21 @@ import ZoomForm from "./components/ZoomForm";
 
 export default function Home() {
   const [showZoomForm, setShowZoomForm] = useState(false);
+  const [showMeetingNotStarted, setShowMeetingNotStarted] = useState(false);
+
+  useEffect(() => {
+    // Vérifier si on revient d'une réunion non commencée
+    const meetingNotStarted = localStorage.getItem("zoomMeetingNotStarted");
+    if (meetingNotStarted === "true") {
+      localStorage.removeItem("zoomMeetingNotStarted");
+      setShowMeetingNotStarted(true);
+
+      // Masquer la modale après 3 secondes
+      setTimeout(() => {
+        setShowMeetingNotStarted(false);
+      }, 3000);
+    }
+  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -47,6 +62,15 @@ export default function Home() {
       </main>
       <Footer />
       {showZoomForm && <ZoomForm onClose={() => setShowZoomForm(false)} />}
+      {showMeetingNotStarted && (
+        <div className="modal-overlay">
+          <div className="modal-content p-6">
+            <p className="text-white text-xl font-semibold">
+              Le cours n&apos;a pas encore commencé
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

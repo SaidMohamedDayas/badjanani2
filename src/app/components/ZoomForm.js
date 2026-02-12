@@ -1,135 +1,59 @@
 "use client";
+
 import { useState } from "react";
-import apiClient from "../api/apiClient";
-import ZoomMeeting from "./ZoomMeeting";
+import { useRouter } from "next/navigation";
 
 export default function ZoomForm({ onClose }) {
-  const [formData, setFormData] = useState({
-    lastName: "",
-    memberId: "",
-  });
-  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [error, setError] = useState("");
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "memberId" ? value.toUpperCase() : value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true);
-    try {
-      const response = await apiClient.get(`/members/${formData.memberId}`);
-      const member = response.data;
-      if (
-        member &&
-        member.firstName &&
-        member.lastName.toUpperCase() === formData.lastName.toUpperCase()
-      ) {
-        setFirstName(member.firstName);
-        setIsAuthorized(true);
-      } else {
-        setError("Nom de famille ou numéro d'adhérent incorrect.");
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 404) {
-        setError("Nom de famille ou numéro d'adhérent incorrect.");
-      } else {
-        setError("Impossible de vérifier vos informations. Veuillez contacter le bureau de l'association pour assistance.");
-      }
-    } finally {
-      setIsLoading(false);
+
+    const clean = String(lastName || "").trim();
+    if (!clean) {
+      setError("Veuillez renseigner votre nom de famille.");
+      return;
     }
+
+    localStorage.setItem("zoomUserName", clean);
+    router.push("/courses");
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content bg-white p-6 rounded shadow-lg">
-        {!isAuthorized ? (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Nom de famille"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              disabled={isLoading}
-            />
-            <input
-              type="text"
-              name="memberId"
-              placeholder="Numéro d'adhérent"
-              value={formData.memberId}
-              onChange={handleChange}
-              className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              disabled={isLoading}
-            />
-            {error && <p className="text-red-500">{error}</p>}
-            <div className="flex justify-between items-center">
-              <button
-                type="button"
-                onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center text-red-500 border border-red-500 rounded-full"
-                disabled={isLoading}
-              >
-                X
-              </button>
-              <button
-                type="submit"
-                className="p-1 text-white rounded-full border border-green-500 flex items-center"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <svg
-                    className="animate-spin h-5 w-5 mr-2 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-                    ></path>
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-6 h-6 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    ></path>
-                  </svg>
-                )}
-              </button>
-            </div>
-          </form>
-        ) : (
-          <ZoomMeeting firstName={firstName} />
-        )}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Nom de famille"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          {error && <p className="text-red-500">{error}</p>}
+
+          <div className="flex justify-between items-center">
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-8 h-8 flex items-center justify-center text-red-500 border border-red-500 rounded-full"
+            >
+              X
+            </button>
+
+            <button
+              type="submit"
+              className="px-4 py-2 text-white bg-green-600 rounded-lg font-semibold"
+            >
+              Rejoindre
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
