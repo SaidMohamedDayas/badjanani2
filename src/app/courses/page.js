@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import ZoomEmbeddedMeeting from "../components/ZoomEmbeddedMeeting";
+
+const ZoomEmbeddedMeeting = dynamic(
+  () => import("../components/ZoomEmbeddedMeeting"),
+  { ssr: false },
+);
 
 export default function CoursesPage() {
   const [userName, setUserName] = useState("");
