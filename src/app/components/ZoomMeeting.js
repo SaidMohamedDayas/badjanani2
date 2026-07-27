@@ -4,7 +4,7 @@ const ZoomMeeting = ({ firstName }) => {
     window.open(
       "https://us06web.zoom.us/j/81408067206?pwd=APoK4zISWOP8iDB0vqfBYRUxfcxVpH.1",
       "_blank",
-      "noopener,noreferrer"
+      "noopener,noreferrer",
     );
     window.location.reload();
   };
