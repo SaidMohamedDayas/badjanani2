@@ -19,7 +19,7 @@ export default function ZoomForm({ onClose }) {
     }
 
     localStorage.setItem("zoomUserName", clean);
-    router.push("/courses");
+    router.push("/live");
   };
 
   return (
