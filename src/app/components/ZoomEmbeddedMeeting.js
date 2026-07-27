@@ -37,8 +37,7 @@ export default function ZoomEmbeddedMeeting({ userName }) {
               continue;
             }
 
-            const { width, height } =
-              meetingRef.current.getBoundingClientRect();
+            const { width, height } = meetingRef.current.getBoundingClientRect();
             if (width > 0 && height > 0) {
               return true;
             }
